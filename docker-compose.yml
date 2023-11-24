@@ -1,0 +1,28 @@
+services:
+  ros2_vscode_dev: &ros2_vscode_anchor
+    container_name: ros2_vscode_dev
+    image: ros2_vscode 
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    # network_mode: host
+    environment:
+      SDL_VIDEODRIVER: x11
+      DISPLAY: $DISPLAY
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./:/home/ros/ws
+    stdin_open: true
+    privileged: true
+    group_add:
+      - video
+    tty: true
+    command: tail -f /dev/null
+    restart: always
+
+  ros2_vscode_prod:
+    <<: *ros2_vscode_anchor
+    container_name: ros2_vscode_prod
+    command: bash -c "source /home/ros/install/setup.bash && ros2 launch vscode_bringup bringup.launch.py"
+    restart: unless-stopped

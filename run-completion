@@ -1,0 +1,3 @@
+complete -W "
+    in_container_build
+" ./run

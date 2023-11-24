@@ -1,0 +1,30 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+    "name": "ros2_vscode",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "ros2_vscode_dev",
+    "runServices": [
+        "ros2_vscode_dev"
+    ],
+    "remoteUser": "ros",
+    "workspaceFolder": "/home/ros/ws",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "streetsidesoftware.code-spell-checker",
+                "ms-python.python",
+                "MS-vsliveshare.vsliveshare",
+                "ms-vscode.cmake-tools",
+                "github.copilot",
+                "ms-vscode.cpptools",
+                "eamodio.gitlens",
+                "python.flake8",
+                "ms-python.black-formatter",
+                "vscode-icons-team.vscode-icons"
+            ]
+        }
+    },
+    "forwardPorts": [
+        6006
+    ]
+}

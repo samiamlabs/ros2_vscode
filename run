@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )" # Get the directory of this file
+
+function check_in_container
+{
+    if [ ! -f /.dockerenv ]; then
+        echo "Please run inside of a docker container"
+        exit 1
+    fi
+}
+
+function in_container_build()
+{
+    check_in_container
+    cd $DIR/.. && colcon build --merge-install --symlink-install
+}
+
+# Check if the command exists
+case "$1" in
+    in_container_build)
+        $1 ${@:2} # Pass all arguments except the first one
+        exit 0
+        ;;
+esac
+
+echo "Command \"$1\" not found!"
+exit 1

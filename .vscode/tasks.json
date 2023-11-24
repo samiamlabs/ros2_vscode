@@ -1,0 +1,60 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "detail": "Build workspace (default)",
+            "type": "shell",
+            "command": "colcon build --merge-install --symlink-install",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/.."
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "build verbose",
+            "detail": "Build workspace with console_conhesion+",
+            "type": "shell",
+            "command": "colcon build --merge-install --symlink-install --event-handlers console_cohesion+",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/.."
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "rebuild",
+            "detail": "Rebuild workspace",
+            "type": "shell",
+            "command": "rm -r build/ install/ && source /opt/dependencies_ws/install/setup.bash && colcon build --merge-install --symlink-install",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/.."
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "rosdep",
+            "detail": "Run rosdep for workspace",
+            "type": "shell",
+            "command": "sudo bash -c 'apt-get update && rosdep install --from-paths src --ignore-src -y'",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+
+    ]
+}
