@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="1" time="4.1167826652526855">
+	<testsuite disabled="0" errors="0" failures="0" name="IncrementorRelaySystem" skipped="0" tests="1" time="4.1167826652526855">
+		<testcase name="Counts up number. 1 2 3 etc" time="4.116783" classname="System Behavior Tests"/>
+	</testsuite>
+</testsuites>

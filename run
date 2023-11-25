@@ -10,16 +10,52 @@ function check_in_container
     fi
 }
 
+function in_container_install_dependencies()
+{
+    check_in_container
+    cd $DIR && \
+    sudo bash -c 'apt-get update && rosdep install --from-paths src --ignore-src -y' && \
+    python3 -m pip install -r requirements.txt
+}
+
 function in_container_build()
 {
     check_in_container
     cd $DIR/.. && colcon build --merge-install --symlink-install
 }
 
+function in_container_build_verbose()
+{
+    check_in_container
+    cd $DIR/.. && colcon build --merge-install --symlink-install --event-handlers console_cohesion+
+}
+
+function in_container_rebuild()
+{
+    check_in_container
+    cd $DIR/.. && \
+    rm -r build/ install/ && \
+    source /opt/dependencies_ws/install/setup.bash && \
+    colcon build --merge-install --symlink-install
+}
+
+function in_container_run_tests()
+{
+    check_in_container
+    cd $DIR/.. && \
+    colcon test --merge-install --executor sequential --pytest-args --verbose && \
+    colcon test-result --verbose
+}
+
+
 # Check if the command exists
 case "$1" in
+    in_container_build_verbose | \
+    in_container_install_dependencies | \
+    in_container_rebuild | \
+    in_container_run_tests | \
     in_container_build)
-        $1 ${@:2} # Pass all arguments except the first one
+        $1 ${@:2}
         exit 0
         ;;
 esac

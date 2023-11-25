@@ -21,7 +21,8 @@
                 "python.flake8",
                 "ms-python.black-formatter",
                 "vscode-icons-team.vscode-icons",
-                "littlefoxteam.vscode-python-test-adapter"
+                "littlefoxteam.vscode-python-test-adapter",
+                "peakchen90.open-html-in-browser"
             ]
         }
     },

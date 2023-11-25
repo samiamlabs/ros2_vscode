@@ -7,27 +7,41 @@
             "label": "build",
             "detail": "Build workspace (default)",
             "type": "shell",
-            "command": "colcon build --merge-install --symlink-install",
+            "command": "./run in_container_build",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/.."
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": "$gcc"
+        },
+        {
+            "label": "test",
+            "detail": "Run all tests and show results.",
+            "type": "shell",
+            "dependsOn": "build",
+            "command": "./run in_container_run_tests",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         },
         {
             "label": "build verbose",
             "detail": "Build workspace with console_conhesion+",
             "type": "shell",
-            "command": "colcon build --merge-install --symlink-install --event-handlers console_cohesion+",
+            "command": "./run in_container_build_verbose",
             "group": {
                 "kind": "build",
                 "isDefault": false
             },
             "options": {
-                "cwd": "${workspaceFolder}/.."
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": "$gcc"
         },
@@ -35,26 +49,25 @@
             "label": "rebuild",
             "detail": "Rebuild workspace",
             "type": "shell",
-            "command": "rm -r build/ install/ && source /opt/dependencies_ws/install/setup.bash && colcon build --merge-install --symlink-install",
+            "command": "./run in_container_rebuild",
             "group": {
                 "kind": "build",
                 "isDefault": false
             },
             "options": {
-                "cwd": "${workspaceFolder}/.."
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": "$gcc"
         },
         {
-            "label": "rosdep",
-            "detail": "Run rosdep for workspace",
+            "label": "install dependencies",
+            "detail": "Run rosdep and pip install for workspace",
             "type": "shell",
-            "command": "sudo bash -c 'apt-get update && rosdep install --from-paths src --ignore-src -y'",
+            "command": "./run in_container_install_dependencies",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
             "problemMatcher": []
         }
-
     ]
 }

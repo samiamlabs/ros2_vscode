@@ -8,9 +8,9 @@ import std_msgs.msg
 
 class Incrementer:
     def __init__(self, node: rclpy.node.Node):
-        print("Init node")
-
         self.node = node
+
+        self.node.get_logger().info("Initailizing incrementer node")
 
         # Create publisher
         self.publisher = self.node.create_publisher(
@@ -26,7 +26,7 @@ class Incrementer:
         )
 
     def callback(self, msg: std_msgs.msg.Int32):
-        print(f"Callback called with number: {msg.data}")
+        self.node.get_logger().info(f"In callback with number: {msg.data}")
 
         number = msg.data
         incremented_number = number + 1

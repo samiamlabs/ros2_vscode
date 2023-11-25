@@ -20,6 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            "incrementer_node = vscode_py.incrementer_node:main",
+            "delayed_relay_node = vscode_py.delayed_relay_node:main",
         ],
     },
 )

@@ -1,2 +1,3 @@
 pytest-timeouts
-black
+junit_xml
+junit2html

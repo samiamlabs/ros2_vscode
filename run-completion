@@ -1,3 +1,7 @@
 complete -W "
     in_container_build
+    in_container_build_verbose
+    in_container_install_dependencies
+    in_container_rebuild
+    in_container_run_tests
 " ./run

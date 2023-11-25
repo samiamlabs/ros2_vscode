@@ -1,4 +1,5 @@
 import rclpy
+import rclpy.node
 
 import std_msgs.msg
 
@@ -8,15 +9,16 @@ from vscode_py.async_primitives import async_sleep
 
 
 class DelayedRelay:
-    def __init__(self, node):
+    def __init__(self, node: rclpy.node.Node):
         self.node = node
+        self.node.get_logger().info("Initializing delayed relay node")
 
         # Change the default callback group to allow for async callbacks
         self.node._default_callback_group = ReentrantCallbackGroup()
 
         # Create subscriber
         self.number_sub = node.create_subscription(
-            std_msgs.msg.Int32, "incremented_number", self.callback, 10
+            std_msgs.msg.Int32, "number", self.callback, 10
         )
 
         # Create publisher

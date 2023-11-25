@@ -15,7 +15,7 @@ class TestDeleyedRelay(unittest.TestCase):
 
         self.test_node = rclpy.create_node("test_node")
         self.test_publisher = self.test_node.create_publisher(
-            std_msgs.msg.Int32, "incremented_number", 10
+            std_msgs.msg.Int32, "number", 10
         )
 
         self.delayed_msg = None
