@@ -8,6 +8,7 @@ import vscode_py.incrementer_node
 
 import std_msgs.msg
 
+
 class TestIncrementer(unittest.TestCase):
     def setUp(self):
         # Create mock node
@@ -28,6 +29,7 @@ class TestIncrementer(unittest.TestCase):
 
         # Assert that the published message was incremented
         self.assertEqual(self.incrementer.publisher.publish.call_args[0][0].data, 2)
+
 
 if __name__ == "__main__":
     suite = unittest.TestSuite()
