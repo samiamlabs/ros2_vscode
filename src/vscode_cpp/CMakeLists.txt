@@ -20,8 +20,14 @@ ament_auto_add_library(incrementer_node_lib SHARED src/incrementer_node.cpp)
 ament_target_dependencies(incrementer_node_lib rclcpp std_msgs)
 
 # executable
-# add_executable(incrementer_node src/incrementer_node.cpp)
-# ament_target_dependencies(incrementer_node rclcpp std_msgs)
+add_executable(incrementer_node src/incrementer_node.cpp)
+ament_target_dependencies(incrementer_node rclcpp std_msgs)
+
+# Install cpp executables
+install(TARGETS
+  incrementer_node
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)

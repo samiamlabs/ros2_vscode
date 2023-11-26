@@ -18,6 +18,20 @@
       "problemMatcher": "$gcc"
     },
     {
+      "label": "build debug",
+      "detail": "Build workspace in debug mode",
+      "type": "shell",
+      "command": "./run in_container_build_debug",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": "$gcc"
+    },
+    {
       "label": "test",
       "detail": "Run all tests and show results.",
       "type": "shell",

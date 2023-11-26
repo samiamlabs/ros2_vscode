@@ -60,6 +60,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   build-essential \
   cmake \
   gdb \
+  gdbserver \
   git \
   openssh-client \
   python3-argcomplete \
@@ -152,4 +153,3 @@ RUN echo "if [ -f ${WS}/ws/run-completion ]; then source ${WS}/ws/run-completion
 
 RUN echo "export RCUTILS_COLORIZED_OUTPUT=1" >> /home/ros/.bashrc
 RUN echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> /home/ros/.bashrc
-

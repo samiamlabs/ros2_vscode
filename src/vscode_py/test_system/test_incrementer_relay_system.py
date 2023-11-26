@@ -15,8 +15,11 @@ class ROS2LaunchManager:
 
     def __enter__(self):
         # Start the ROS2 launch file as a subprocess
+        launchfile = "incr_relay_system.launch.py"
+        # launchfile = "cpp_incr_relay_system.launch.py"
+
         self.process = subprocess.Popen(
-            ["ros2", "launch", "vscode_bringup", "incrementor_relay_system.launch.py"],
+            ["ros2", "launch", "vscode_bringup", launchfile],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             preexec_fn=os.setsid,
