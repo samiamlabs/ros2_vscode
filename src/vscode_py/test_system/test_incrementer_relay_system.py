@@ -1,10 +1,10 @@
-import sys
-import subprocess
-import time
 import os
 import signal
-import junit_xml
+import subprocess
+import sys
+import time
 
+import junit_xml
 import rclpy
 import std_msgs.msg
 
@@ -139,7 +139,7 @@ def generate_html_report(xml_file_path, html_file_path):
 
 
 def main():
-    with ROS2LaunchManager() as process:
+    with ROS2LaunchManager():
         # Insert testing logic here
         test_runner = TestRunner()
         test_cases = test_runner.run_tests()

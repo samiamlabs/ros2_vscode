@@ -9,6 +9,9 @@ import std_msgs.msg
 
 class TestDeleyedRelay(unittest.TestCase):
     def setUp(self):
+        # Settings
+        self.default_timeout = 3
+
         rclpy.init(args=None)
         self.node = rclpy.create_node("delayed_relay")
         self.delayd_relay = vscode_py.delayed_relay_node.DelayedRelay(self.node)
@@ -38,9 +41,11 @@ class TestDeleyedRelay(unittest.TestCase):
         # Publish message to delayed_relay
         self.test_publisher.publish(std_msgs.msg.Int32(data=1))
 
-        # Spin node until it has published or 3 seconds have passed
+        # Spin node until it has published or the default timeout has passed
         start_time = time.time()
-        while self.delayed_msg is None and time.time() < start_time + 3:
+        while (
+            self.delayed_msg is None and time.time() < start_time + self.default_timeout
+        ):
             rclpy.spin_once(self.node, timeout_sec=0.1)
             rclpy.spin_once(self.test_node, timeout_sec=0.1)
 
@@ -51,9 +56,11 @@ class TestDeleyedRelay(unittest.TestCase):
         # Publish message to delayed_relay
         self.test_publisher.publish(std_msgs.msg.Int32(data=1))
 
-        # Spin node until it has published or 3 seconds have passed
+        # Spin node until it has published or the default timeout has passed
         start_time = time.time()
-        while self.delayed_msg is None and time.time() < start_time + 3:
+        while (
+            self.delayed_msg is None and time.time() < start_time + self.default_timeout
+        ):
             rclpy.spin_once(self.node, timeout_sec=0.1)
             rclpy.spin_once(self.test_node, timeout_sec=0.1)
 
@@ -65,9 +72,12 @@ class TestDeleyedRelay(unittest.TestCase):
         self.test_publisher.publish(std_msgs.msg.Int32(data=1))
         self.test_publisher.publish(std_msgs.msg.Int32(data=2))
 
-        # Spin node until it has published or 3 seconds have passed
+        # Spin node until it has published or the default timeout has passed
         start_time = time.time()
-        while self.delayed_msg_count < 2 and time.time() < start_time + 3:
+        while (
+            self.delayed_msg_count < 2
+            and time.time() < start_time + self.default_timeout
+        ):
             rclpy.spin_once(self.node, timeout_sec=0.01)
             rclpy.spin_once(self.test_node, timeout_sec=0.01)
 
