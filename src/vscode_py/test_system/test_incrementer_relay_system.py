@@ -63,7 +63,7 @@ class TestRunner:
         test_cases = []
         test_result = True
         test_case = junit_xml.TestCase(
-            "Counts up number. 1 2 3 etc", "System Behavior Tests"
+            "Counts up numbers. 1 2 3 etc", "System Behavior Tests"
         )
 
         print("Waiting for nodes to start up...")
