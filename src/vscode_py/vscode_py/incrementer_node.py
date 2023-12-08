@@ -29,7 +29,12 @@ class Incrementer:
         self.node.get_logger().info(f"In callback with number: {msg.data}")
 
         number = msg.data
-        incremented_number = number + 1
+        if number % 2 == 0:
+            incremented_number = number + 3
+        elif number >= 10:
+            incremented_number = number + 10
+        else:
+            incremented_number = number + 1
 
         # Publish incremented number
         self.publisher.publish(std_msgs.msg.Int32(data=incremented_number))

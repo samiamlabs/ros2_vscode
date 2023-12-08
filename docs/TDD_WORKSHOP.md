@@ -1,8 +1,7 @@
-## TDD Workshop, draft
+## TDD Workshop
 
 #### Introduction
 
-- ~~Explain where TDD came from?~~
 - Go over the Red, Green, Refactor cycle
 - Unit tests, integration tests and system tests. What is the difference?
 
@@ -50,6 +49,8 @@
 - Refactor if needed
 - Repeat
 
-#### Mission 6: Convert the delayed_relay node to cpp using TDD
+#### Mission 6: Linting
 
-- Maybe don't do this...
+- Fix project linting issues
+
+#### (Mission 7: Convert the delayed_relay node to cpp using TDD)

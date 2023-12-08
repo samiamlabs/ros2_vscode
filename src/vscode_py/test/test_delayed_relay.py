@@ -1,10 +1,10 @@
-import unittest
 import time
-
-import vscode_py.delayed_relay_node
+import unittest
 
 import rclpy
 import std_msgs.msg
+
+import vscode_py.delayed_relay_node
 
 
 class TestDeleyedRelay(unittest.TestCase):

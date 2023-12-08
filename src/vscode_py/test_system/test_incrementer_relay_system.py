@@ -93,14 +93,14 @@ class TestRunner:
                 self.received_numbers[1] == 2
             ), f"Expected {self.received_numbers[1]} to be 2"
             assert (
-                self.received_numbers[2] == 3
-            ), f"Expected {self.received_numbers[2]} to be 3"
+                self.received_numbers[2] == 5
+            ), f"Expected {self.received_numbers[2]} to be 5"
             assert (
-                self.received_numbers[3] == 4
-            ), f"Expected {self.received_numbers[3]} to be 4"
+                self.received_numbers[3] == 6
+            ), f"Expected {self.received_numbers[3]} to be 6"
             assert (
-                self.received_numbers[4] == 5
-            ), f"Expected {self.received_numbers[4]} to be 5"
+                self.received_numbers[4] == 9
+            ), f"Expected {self.received_numbers[4]} to be 9"
         except AssertionError as error:
             print(f"Assertion error: {error}")
             test_result = False

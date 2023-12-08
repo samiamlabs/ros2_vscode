@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<testsuites disabled="0" errors="0" failures="0" tests="1" time="4.110601425170898">
-	<testsuite disabled="0" errors="0" failures="0" name="IncrementorRelaySystem" skipped="0" tests="1" time="4.110601425170898">
-		<testcase name="Counts up number. 1 2 3 etc" time="4.110601" classname="System Behavior Tests"/>
+<testsuites disabled="0" errors="0" failures="0" tests="1" time="4.113084554672241">
+	<testsuite disabled="0" errors="0" failures="0" name="IncrementorRelaySystem" skipped="0" tests="1" time="4.113084554672241">
+		<testcase name="Counts up numbers. 1 2 3 etc" time="4.113085" classname="System Behavior Tests"/>
 	</testsuite>
 </testsuites>
